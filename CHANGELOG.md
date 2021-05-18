@@ -1,3 +1,6 @@
+**v1.1.2**
+* Fixed several doc strings.
+
 **v1.1.1**
 * Corrected the requirements to include Pillow and numpy.
 

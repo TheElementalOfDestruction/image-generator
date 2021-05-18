@@ -10,7 +10,8 @@ SHIP_BASE = DIRECTORY + 'ship_base.png'
 
 def createShip(leftImageData, rightImageData):
     """
-    Creates a ship image. Each image data should
+    Creates a ship image. Each image data should be the raw data stream of an
+    image.
     """
     with PIL.Image.open(SHIP_BASE) as base:
         user1Image = PIL.Image.open(io.BytesIO(leftImageData))
@@ -19,5 +20,5 @@ def createShip(leftImageData, rightImageData):
         base.paste(user2Image.resize((128, 128), resample = 2), (256, 0))
         user1Image.close()
         user2Image.close()
-        
+
         return getPilData(base)
