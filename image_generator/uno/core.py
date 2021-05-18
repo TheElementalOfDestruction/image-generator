@@ -6,7 +6,7 @@ from image_generator.utils import calculatePositionFullCenter, getPilData
 
 
 DIRECTORY = '/'.join(__file__.replace('\\', '/').split('/')[:-1] + [''])
-UNO_BASE = DIRECTORY + 'uno.jpg'
+UNO_BASE = DIRECTORY + 'uno_base.jpg'
 
 def createUno(cardText, faceText = '', color = (0, 0, 0), cardColor = None, faceColor = None, font = 'consolas', cardFont = None, faceFont = None):
     """

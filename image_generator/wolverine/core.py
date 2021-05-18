@@ -4,7 +4,7 @@ import numpy
 import PIL.Image
 
 DIRECTORY = '/'.join(__file__.replace('\\', '/').split('/')[:-1] + [''])
-WOLVERINE_BASE = DIRECTORY + 'wolverine base.png'
+WOLVERINE_BASE = DIRECTORY + 'wolverine_base.png'
 
 def find_coeffs(pa, pb):
     matrix = []
