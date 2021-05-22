@@ -1,3 +1,6 @@
+**v1.1.3**
+* Added new option `number` to the uno generator. This will replace the number in the "or draw 25" section if specified.
+
 **v1.1.2**
 * Fixed several doc strings.
 
