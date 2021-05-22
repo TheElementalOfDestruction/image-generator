@@ -71,7 +71,7 @@ def createUno(cardText, faceText = '', color = (0, 0, 0), cardColor = None, face
     if faceText:
         draw.text(posFace, faceTextFinal[0], faceColor, faceTextFinal[1], align = 'center')
     if useNumber:
-        draw.text(posNumber, numberTextFinal[0], (48, 38, 28), numberTextFinal[1])
+        draw.text(posNumber, numberTextFinal[0], (46, 38, 32), numberTextFinal[1])
 
     # Save the data and return it as a png image.
     out = getPilData(im)
