@@ -1,3 +1,7 @@
+**v1.2.0**
+* Added new submodule `test_font` for displaying an image to demonstrate the font.
+* Added some custom exceptions.
+
 **v1.1.3**
 * Added new option `number` to the uno generator. This will replace the number in the "or draw 25" section if specified.
 

@@ -2,8 +2,9 @@ import PIL.Image
 import PIL.ImageDraw
 import PTS
 
-from image_generator.utils import calculatePositionVerticalCenter, getPilData
 from image_generator.drake.registry import DRAKE_IMAGES
+from image_generator.exceptions import TemplateError
+from image_generator.utils import calculatePositionVerticalCenter, getPilData
 
 
 def createDrake(template = 'drake', topText = '', bottomText = '', color = (0, 0, 0), topColor = None, bottomColor = None, font = 'consolas', topFont = None, bottomFont = None):
@@ -22,7 +23,10 @@ def createDrake(template = 'drake', topText = '', bottomText = '', color = (0, 0
     :param font:        A font name that has been loaded into the PTS module.
     """
     # Load the template.
-    template = DRAKE_IMAGES[template.lower()]
+    try:
+        template = DRAKE_IMAGES[template.lower()]
+    except KeyError:
+        raise TemplateError(template)
 
     # Set the colors.
     topColor = topColor or color
