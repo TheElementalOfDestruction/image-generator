@@ -1,3 +1,8 @@
+**v1.3.0**
+* Adjusted drake files to be core and not builder.
+* Added error handling for no top or bottom text in drake.
+* Added new submodule `realization`.
+
 **v1.2.0**
 * Added new submodule `test_font` for displaying an image to demonstrate the font.
 * Added some custom exceptions.
