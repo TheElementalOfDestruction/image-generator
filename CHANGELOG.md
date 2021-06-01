@@ -1,3 +1,6 @@
+**v1.3.1**
+* Fixed setup.py requiring requirements already be installed to run.
+
 **v1.3.0**
 * Adjusted drake files to be core and not builder.
 * Added error handling for no top or bottom text in drake.

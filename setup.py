@@ -1,4 +1,5 @@
 import os
+import re
 
 from setuptools import setup
 
@@ -10,7 +11,12 @@ main_module = 'image_generator'
 with open('README.rst', 'rb') as stream:
     long_description = stream.read().decode('utf-8').replace('\r', '')
 
-from image_generator import __version__
+# Get the version number (can't be imported because of requirements).
+version_re = re.compile("__version__ = '(?P<version>[0-9\\.]*)'")
+with open('image_generator/__init__.py', 'r') as stream:
+    contents = stream.read()
+match = version_re.search(contents)
+__version__ = match.groupdict()['version']
 
 # read in the dependencies from the virtualenv requirements file
 dependencies = []
