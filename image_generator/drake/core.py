@@ -29,9 +29,8 @@ def createDrake(template = 'drake', topText = '', bottomText = '', color = (0, 0
         raise ValueError(':param bottomText: must not be empty.')
 
     # Load the template.
-    try:
-        template = DRAKE_IMAGES[template.lower()]
-    except KeyError:
+    template = DRAKE_IMAGES.get(template.lower())
+    if not template:
         raise TemplateError(template)
 
     # Set the colors.
