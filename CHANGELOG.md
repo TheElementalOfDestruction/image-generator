@@ -1,3 +1,6 @@
+**v1.4.2**
+* Fixed an error in `createJail`.
+
 **v1.4.1**
 * Added import for `createJail`.
 

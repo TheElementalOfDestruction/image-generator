@@ -14,6 +14,6 @@ def createJail(imageData):
     """
     with PIL.Image.open(JAIL_BASE) as base:
         userImage = PIL.Image.open(io.BytesIO(imageData)).resize((1024, 1024), resample = 3)
-        userImage.paste(base, (0, 0))
+        userImage.paste(base, (0, 0), mask = base)
 
         return getPilData(userImage)
