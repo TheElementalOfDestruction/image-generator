@@ -2,7 +2,7 @@ import PIL.Image
 import PIL.ImageDraw
 import PTS
 
-from image_generator.utils import calculatePositionFullCenter, getPilData
+from ..utils import calculatePositionFullCenter, getPilData
 
 
 DIRECTORY = '/'.join(__file__.replace('\\', '/').split('/')[:-1] + [''])
@@ -63,17 +63,15 @@ def createUno(cardText, faceText = '', color = (0, 0, 0), cardColor = None, face
         posNumber = calculatePositionFullCenter(40, 330, 80, numberTextSize[0], 60, numberTextSize[1])
 
     # Load the image and prepare for drawing.
-    im = PIL.Image.open(base)
-    draw = PIL.ImageDraw.ImageDraw(im)
+    with PIL.Image.open(base) as im:
+        draw = PIL.ImageDraw.ImageDraw(im)
 
-    # Draw the text.
-    draw.text(posCard, cardTextFinal[0], cardColor, cardTextFinal[1])
-    if faceText:
-        draw.text(posFace, faceTextFinal[0], faceColor, faceTextFinal[1], align = 'center')
-    if useNumber:
-        draw.text(posNumber, numberTextFinal[0], (46, 38, 32), numberTextFinal[1])
+        # Draw the text.
+        draw.text(posCard, cardTextFinal[0], cardColor, cardTextFinal[1])
+        if faceText:
+            draw.text(posFace, faceTextFinal[0], faceColor, faceTextFinal[1], align = 'center')
+        if useNumber:
+            draw.text(posNumber, numberTextFinal[0], (46, 38, 32), numberTextFinal[1])
 
-    # Save the data and return it as a png image.
-    out = getPilData(im)
-    im.close()
-    return out
+        # Save the data and return it as a png image.
+        return getPilData(im)

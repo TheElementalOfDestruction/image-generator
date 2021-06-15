@@ -1,1 +1,1 @@
-from image_generator.wolverine.core import createWolverine
+from .core import createWolverine

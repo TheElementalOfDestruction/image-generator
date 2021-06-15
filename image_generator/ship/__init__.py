@@ -1,1 +1,1 @@
-from image_generator.ship.core import createShip
+from .core import createShip

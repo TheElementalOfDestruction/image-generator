@@ -3,6 +3,9 @@ import io
 import numpy
 import PIL.Image
 
+from ..utils import getPilData
+
+
 DIRECTORY = '/'.join(__file__.replace('\\', '/').split('/')[:-1] + [''])
 WOLVERINE_BASE = DIRECTORY + 'wolverine_base.png'
 
@@ -18,13 +21,12 @@ def find_coeffs(pa, pb):
     return numpy.array(res).reshape(8)
 
 def createWolverine(imagedata):
+    """
+    Creates a new wolverine image.
+    """
     im = PIL.Image.open(io.BytesIO(imagedata)).convert('RGBA').resize((390, 390), resample = 3).transform(size = (390, 390), method = PIL.Image.PERSPECTIVE, data = find_coeffs(((0, 12), (289, 0), (334, 351), (52, 389)), ((0, 0), (390, 0), (390, 390), (0, 390))), resample=3)
     ret = PIL.Image.new('RGBA', (600, 873), color = (0,  0, 0, 0))
     ret.paste(im, box = (160, 468))
-    wolv = PIL.Image.open(WOLVERINE_BASE)
-    ret.paste(wolv, mask = wolv)
-    bio = io.BytesIO()
-    ret.save(bio, 'PNG')
-    while bio.tell() != 0:
-        bio.seek(0)
-    return bio.read()
+    with PIL.Image.open(WOLVERINE_BASE) as wolv:
+        ret.paste(wolv, mask = wolv)
+        return  getPilData(ret)

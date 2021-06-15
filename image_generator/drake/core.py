@@ -2,9 +2,9 @@ import PIL.Image
 import PIL.ImageDraw
 import PTS
 
-from image_generator.drake.registry import DRAKE_IMAGES
-from image_generator.exceptions import TemplateError
-from image_generator.utils import calculatePositionVerticalCenter, getPilData
+from .registry import DRAKE_IMAGES
+from ..exceptions import TemplateError
+from ..utils import calculatePositionVerticalCenter, getPilData
 
 
 def createDrake(template = 'drake', topText = '', bottomText = '', color = (0, 0, 0), topColor = None, bottomColor = None, font = 'consolas', topFont = None, bottomFont = None):
@@ -55,14 +55,12 @@ def createDrake(template = 'drake', topText = '', bottomText = '', color = (0, 0
     posBottom = calculatePositionVerticalCenter(template['bottom text corner'][0], template['bottom text corner'][1], template['bottom text height'], bottomTextFinal[1].getsize_multiline(bottomTextFinal[0])[1])
 
     # Load the template image.
-    im = PIL.Image.open(template['image'])
-    draw = PIL.ImageDraw.ImageDraw(im)
+    with PIL.Image.open(template['image']) as im:
+        draw = PIL.ImageDraw.ImageDraw(im)
 
-    # Place the text in the image.
-    draw.text(posTop, topTextFinal[0], topColor, topTextFinal[1])
-    draw.text(posBottom, bottomTextFinal[0], bottomColor, bottomTextFinal[1])
+        # Place the text in the image.
+        draw.text(posTop, topTextFinal[0], topColor, topTextFinal[1])
+        draw.text(posBottom, bottomTextFinal[0], bottomColor, bottomTextFinal[1])
 
-    # Save the data and return it as a png image.
-    out = getPilData(im)
-    im.close()
-    return out
+        # Save the data and return it as a png image.
+        return getPilData(im)

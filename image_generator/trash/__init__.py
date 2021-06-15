@@ -1,1 +1,1 @@
-from image_generator.trash.core import createTrash
+from .core import createTrash

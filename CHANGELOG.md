@@ -1,3 +1,8 @@
+**v1.4.0**
+* Added new submodule `jail`.
+* Reorganized several files to work slightly differently.
+* Redid the imports.
+
 **v1.3.2**
 * Moved the raising of the `TemplateError` in the `drake` module so that it wouldn't include the "During the handling of the above exception" part.
 

@@ -2,6 +2,8 @@ import io
 
 import PIL.Image
 
+from ..utils import getPilData
+
 
 DIRECTORY = '/'.join(__file__.replace('\\', '/').split('/')[:-1] + [''])
 
@@ -23,13 +25,16 @@ def generateHand(imagedata):
     return im
 
 def createTrash(face, hand):
+    """
+    Creates a new trash image.
+    """
     faceImage = rotateFace(face)
     handImage = generateHand(hand)
-    trashBase = PIL.Image.open(DIRECTORY + 'trash_base.png').convert('RGBA')
+    im = PIL.Image.open(DIRECTORY + 'trash_base.png')
+    trashBase = im.convert('RGBA')
+    im.close()
     trashBase.paste(handImage, (105, 190))
     trashBase.alpha_composite(faceImage, dest = (375, 80))
-    bio = io.BytesIO()
-    trashBase.save(bio, 'PNG')
-    while bio.tell() != 0:
-        bio.seek(0)
-    return bio.read()
+    data = getPilData(trashBase)
+    trashBase.close()
+    return data

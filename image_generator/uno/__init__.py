@@ -1,1 +1,1 @@
-from image_generator.uno.core import createUno
+from .core import createUno

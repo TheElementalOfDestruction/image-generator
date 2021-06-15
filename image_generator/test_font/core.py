@@ -2,7 +2,7 @@ import PIL.Image
 import PIL.ImageDraw
 import PTS
 
-from image_generator.utils import calculatePositionFullCenter, getPilData
+from ..utils import calculatePositionFullCenter, getPilData
 
 
 def createFontTest(font, text = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz1234567890!@#$%^&*()-_=+,.<>/?\\|\'"[]{}`~'):
@@ -27,17 +27,11 @@ def createFontTest(font, text = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrst
     drawPosition = calculatePositionFullCenter(0, 0, imageSize[0], size[0], imageSize[1], size[1])
 
     # Create the image.
-    im = PIL.Image.new('RGB', imageSize, (255, 255, 255))
-    draw = PIL.ImageDraw.ImageDraw(im)
+    with PIL.Image.new('RGB', imageSize, (255, 255, 255)) as im:
+        draw = PIL.ImageDraw.ImageDraw(im)
 
-    # Draw the text.
-    draw.text(drawPosition, text, (0, 0, 0), font)
+        # Draw the text.
+        draw.text(drawPosition, text, (0, 0, 0), font)
 
-    # Get the image data.
-    out = getPilData(im)
-
-    # Close the image.
-    im.close()
-
-    # Return the data.
-    return out
+        # Get the image data and return it.
+        return getPilData(im)

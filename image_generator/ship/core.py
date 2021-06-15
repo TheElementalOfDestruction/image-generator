@@ -2,7 +2,7 @@ import io
 
 import PIL.Image
 
-from image_generator.utils import getPilData
+from ..utils import getPilData
 
 
 DIRECTORY = '/'.join(__file__.replace('\\', '/').split('/')[:-1] + [''])

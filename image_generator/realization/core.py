@@ -2,7 +2,7 @@ import PIL.Image
 import PIL.ImageDraw
 import PTS
 
-from image_generator.utils import calculatePositionVerticalCenter, getPilData
+from ..utils import calculatePositionVerticalCenter, getPilData
 
 
 DIRECTORY = '/'.join(__file__.replace('\\', '/').split('/')[:-1] + [''])
@@ -50,14 +50,12 @@ def createRealization(topText, bottomText, color = (0, 0, 0), topColor = None, b
     posBottom = calculatePositionVerticalCenter(2, 250, 242, bottomTextFinal[1].getsize_multiline(bottomTextFinal[0])[1])
 
     # Load the template image.
-    im = PIL.Image.open(REALIZATION_BASE)
-    draw = PIL.ImageDraw.ImageDraw(im)
+    with PIL.Image.open(REALIZATION_BASE) as im:
+        draw = PIL.ImageDraw.ImageDraw(im)
 
-    # Place the text in the image.
-    draw.text(posTop, topTextFinal[0], topColor, topTextFinal[1])
-    draw.text(posBottom, bottomTextFinal[0], bottomColor, bottomTextFinal[1])
+        # Place the text in the image.
+        draw.text(posTop, topTextFinal[0], topColor, topTextFinal[1])
+        draw.text(posBottom, bottomTextFinal[0], bottomColor, bottomTextFinal[1])
 
-    # Save the data and return it as a png image.
-    out = getPilData(im)
-    im.close()
-    return out
+        # Save the data and return it as a png image.
+        return getPilData(im)

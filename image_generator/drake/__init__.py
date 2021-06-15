@@ -1,1 +1,1 @@
-from image_generator.drake.core import createDrake
+from .core import createDrake
