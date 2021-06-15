@@ -31,6 +31,7 @@ __date__ = '2021-06-14'
 __version__ = '1.4.0'
 
 from .drake import createDrake
+from .jail import createJail
 from .realization import createRealization
 from .ship import createShip
 from .test_font import createFontTest

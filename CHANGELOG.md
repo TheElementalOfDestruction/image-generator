@@ -1,3 +1,6 @@
+**v1.4.1**
+* Added import for `createJail`.
+
 **v1.4.0**
 * Added new submodule `jail`.
 * Reorganized several files to work slightly differently.
