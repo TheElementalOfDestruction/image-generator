@@ -1,3 +1,9 @@
+**v1.5.0**
+* Added new submodule `pooh`.
+* Moved code for many "top text, bottom text" memes into a function in `utils`, aptly named `topTextBottomText`.
+* Adjust `createRealization` to use `utils.topTextBottomText`.
+* Fixed many documentation errors.
+
 **v1.4.2**
 * Fixed an error in `createJail`.
 

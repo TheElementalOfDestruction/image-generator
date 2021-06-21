@@ -15,12 +15,12 @@ def createDrake(template = 'drake', topText = '', bottomText = '', color = (0, 0
     :param bottomText:  The text to put in the bottom of the Drake meme.
     :param color:       A PIL compatible color code for the text color.
     :param topColor:    The color to use for the top text. If not specified,
-                        this will default to the value of color.
+                        this will default to the value of :param color:.
     :param bottomColor: The color to use for the bottom text. If not specified,
-                        this will default to the value of color.
+                        this will default to the value of :param color:.
     :param font:        A font name that has been loaded into the PTS module.
     :param topFont:     The name of the font to use for the top text.
-    :param font:        A font name that has been loaded into the PTS module.
+    :param bottomtFont: The name of the font to use for the bottom text.
     """
     # Check that top text and bottom text are not empty
     if not topText:

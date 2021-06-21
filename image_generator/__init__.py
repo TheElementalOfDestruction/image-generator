@@ -27,11 +27,12 @@ https://github.com/TheElementalOfDestruction/image-generator
 #    along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 __author__ = 'Destiny Peterson (The Elemental of Destruction)'
-__date__ = '2021-06-14'
-__version__ = '1.4.2'
+__date__ = '2021-06-20'
+__version__ = '1.5.0'
 
 from .drake import createDrake
 from .jail import createJail
+from .pooh import createPooh
 from .realization import createRealization
 from .ship import createShip
 from .test_font import createFontTest
