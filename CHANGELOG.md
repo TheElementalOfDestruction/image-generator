@@ -1,3 +1,8 @@
+**v1.6.0**
+* Added new submodule `killed`.
+* Made new function `utils.singleTextBox` for easily making memes that only use a single, unrotated text box.
+* Corrected some miscellaneous things.
+
 **v1.5.0**
 * Added new submodule `pooh`.
 * Moved code for many "top text, bottom text" memes into a function in `utils`, aptly named `topTextBottomText`.

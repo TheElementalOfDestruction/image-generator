@@ -4,6 +4,7 @@ import PIL.Image
 
 from ..utils import getPilData
 
+
 DIRECTORY = '/'.join(__file__.replace('\\', '/').split('/')[:-1] + [''])
 JAIL_BASE = DIRECTORY + 'jail_base.png'
 

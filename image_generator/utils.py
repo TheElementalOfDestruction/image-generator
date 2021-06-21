@@ -1,5 +1,6 @@
 import io
 
+from . import constants
 import PIL.Image
 import PIL.ImageDraw
 import PTS
@@ -24,7 +25,52 @@ def getPilData(image):
         bio.seek(0)
     return bio.read()
 
-def topTextBottomText(topText, bottomText, color = (0, 0, 0), topColor = None, bottomColor = None, font = 'consolas', topFont = None, bottomFont = None, basePath = None, topTextCorner = None, topTextSize = None, bottomTextCorner = None, bottomTextSize = None):
+def singleTextBox(text, color, font, basePath, corner, size, center = constants.CENTER_CENTER):
+    """
+    Function for making a meme with a single, unrotated text box.
+    :param text:     The text to insert into the box.
+    :param color:    A PIL compatible color code for the text color.
+    :param font:     A font name that has been loaded into the PTS module.
+    :param basePath: The path to the base image to be used.
+    :param corner:   The (x, y) position of the top left corner of the text box.
+    :param size:     The (widht, height) size of the text box.
+    :param center:   The method to use for centering the text. Defaults to full
+                     centered.
+    """
+    # Check that the text is not empty.
+    if not text:
+        raise ValueError(':param text: must not be empty.')
+
+    # Prepare the text.
+    textFinal = PTS.fitText(text, size[0], size[1], font, fast = True)
+    if textFinal is None:
+        raise OverflowError('Text is too long to fit in the specified space.')
+
+    # Determine exactly where to put the text.
+    textSize = textFinal[1].getsize_multiline(textFinal[0])
+    if center == constants.CENTER_CENTER:
+        posText = calculatePositionFullCenter(corner[0], corner[1], size[0], textSize[0], size[1], textSize[1])
+    elif center == constants.CENTER_HORIZONTAL:
+        posText = calculatePositionHorizontalCenter(corner[0], corner[1], size[0], textSize[0])
+    elif center == constants.CENTER_VERTICAL:
+        posText = calculatePositionVerticalCenter(corner[0], corner[1], size[1], textSize[1])
+    else:
+        raise ValueError('Unknown center type: {}'.format(center))
+
+    # Load the template image.
+    with PIL.Image.open(basePath) as im:
+        draw = PIL.ImageDraw.ImageDraw(im)
+
+        # Place the text in the image.
+        if center == constants.CENTER_CENTER or cetner == constants.CENTER_HORIZONTAL:
+            draw.text(posText, textFinal[0], color, textFinal[1], align = 'center')
+        else:
+            draw.text(posText, textFinal[0], color, textFinal[1])
+
+        # Save the data and return it as a png image.
+        return getPilData(im)
+
+def topTextBottomText(topText, bottomText, color, topColor, bottomColor, font, topFont, bottomFont, basePath, topTextCorner, topTextSize, bottomTextCorner, bottomTextSize):
     """
     Function used for creating a meme in the "top text, bottom text" format.
     :param topText:          The text to put in the top of the Drake meme.
@@ -64,11 +110,11 @@ def topTextBottomText(topText, bottomText, color = (0, 0, 0), topColor = None, b
     # Prepare the text.
     topTextFinal = PTS.fitText(topText, topTextSize[0], topTextSize[1], topFont, fast = True)
     if topTextFinal is None:
-        raise OverflowError('Top text is too long to fit in the specified space')
+        raise OverflowError('Top text is too long to fit in the specified space.')
 
     bottomTextFinal = PTS.fitText(bottomText, bottomTextSize[0], bottomTextSize[1], bottomFont, fast = True)
     if bottomTextFinal is None:
-        raise OverflowError('Top text is too long to fit in the specified space')
+        raise OverflowError('Top text is too long to fit in the specified space.')
 
     # Determine exactly where to put the text.
     posTop = calculatePositionVerticalCenter(topTextCorner[0], topTextCorner[1], topTextSize[1], topTextFinal[1].getsize_multiline(topTextFinal[0])[1])

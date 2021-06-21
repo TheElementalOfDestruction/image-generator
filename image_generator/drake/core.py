@@ -44,11 +44,11 @@ def createDrake(template = 'drake', topText = '', bottomText = '', color = (0, 0
     # Prepare the text.
     topTextFinal = PTS.fitText(topText, template['top text width'], template['top text height'], topFont, fast = True)
     if topTextFinal is None:
-        raise OverflowError('Top text is too long to fit in the specified space')
+        raise OverflowError('Top text is too long to fit in the specified space.')
 
     bottomTextFinal = PTS.fitText(bottomText, template['bottom text width'], template['bottom text height'], bottomFont, fast = True)
     if bottomTextFinal is None:
-        raise OverflowError('Top text is too long to fit in the specified space')
+        raise OverflowError('Top text is too long to fit in the specified space.')
 
     # Determine exactly where to put the text.
     posTop = calculatePositionVerticalCenter(template['top text corner'][0], template['top text corner'][1], template['top text height'], topTextFinal[1].getsize_multiline(topTextFinal[0])[1])
