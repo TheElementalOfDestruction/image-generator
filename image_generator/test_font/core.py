@@ -21,7 +21,7 @@ def createFontTest(font, text = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrst
     # Create the size tuple for the new image.
     imageSize = (int(size[0] * 1.1), int(size[1] * 5))
     if imageSize[0] == size[0]:
-        imageSize = (imageSize[0] + 5, imageSize[1])
+        imageSize = (imageSize[0] + 10, imageSize[1])
 
     # Get the position to place the text.
     drawPosition = calculatePositionFullCenter(0, 0, imageSize[0], size[0], imageSize[1], size[1])
