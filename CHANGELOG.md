@@ -1,3 +1,6 @@
+**v1.6.1**
+* Minor improvement to the code for `createFontTest` to make it do padding in a better way for small bodies of text.
+
 **v1.6.0**
 * Added new submodule `killed`.
 * Made new function `utils.singleTextBox` for easily making memes that only use a single, unrotated text box.
