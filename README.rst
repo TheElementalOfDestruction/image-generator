@@ -9,8 +9,8 @@ Note: The uno meme generator requires that you load the Comic Sans Bold font int
 .. |License: GPL v3| image:: https://img.shields.io/badge/License-GPLv3-blue.svg
    :target: LICENSE.txt
 
-.. |PyPI3| image:: https://img.shields.io/badge/pypi-1.6.2-blue.svg
-   :target: https://pypi.org/project/PTS/1.6.2/
+.. |PyPI3| image:: https://img.shields.io/badge/pypi-1.6.3-blue.svg
+   :target: https://pypi.org/project/image-generator/1.6.3/
 
 .. |PyPI1| image:: https://img.shields.io/badge/python-3.6+-brightgreen.svg
    :target: https://www.python.org/downloads/release/python-367/
