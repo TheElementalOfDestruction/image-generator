@@ -129,4 +129,4 @@ dmypy.json
 .pyre/
 
 # Upload files
-update.bat
+upload.bat
