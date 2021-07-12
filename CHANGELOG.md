@@ -1,3 +1,6 @@
+**v1.6.2**
+* Prepared for upload to PyPI.
+
 **v1.6.1**
 * Minor improvement to the code for `createFontTest` to make it do padding in a better way for small bodies of text.
 
