@@ -30,9 +30,9 @@ with open(filename, 'r') as stream:
             dependencies.append(package)
 
 setup(
-    name = main_module,
+    name = 'py-image-generator',
     version = __version__,
-    description = "Image Generator",
+    description = 'Image Generator',
     long_description = long_description,
     long_description_content_type = 'text/x-rst',
     url = github_url,
