@@ -28,7 +28,7 @@ https://github.com/TheElementalOfDestruction/image-generator
 
 __author__ = 'Destiny Peterson (The Elemental of Destruction)'
 __date__ = '2021-07-11'
-__version__ = '1.6.3'
+__version__ = '1.7.0'
 
 from .drake import createDrake
 from .jail import createJail
@@ -37,6 +37,7 @@ from .pooh import createPooh
 from .realization import createRealization
 from .ship import createShip
 from .test_font import createFontTest
+from .text_image import createTextImage
 from .trash import createTrash
 from .uno import createUno
 from .wolverine import createWolverine

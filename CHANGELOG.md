@@ -1,3 +1,8 @@
+**v1.7.0**
+* Added new submodule `text_image` that creates an image that just has text on it.
+* Added new function to utils called `calculatePositionAlign` which will calculate the specific position based on the alignment specified.
+* Added Alignment enum for specifying an alignment type reliably.
+
 **v1.6.3**
 * Fix for README links.
 

@@ -1,10 +1,37 @@
 import io
 
 from . import constants
+from .enums import Alignment
 import PIL.Image
 import PIL.ImageDraw
 import PTS
 
+
+def calculatePositionAlign(textBoxCornerXY, textBoxWH, textWH, alignment : Alignment):
+    """
+    Uses the position of the top right corner of the text box, the width and
+    height of the text box, and the width and height of the text box to align
+    the text with the specified alignment method.
+    """
+    alignment = Alignment(alignment)
+    if alignment == Alignment.TOP_LEFT:
+        return textBoxCornerXY
+    elif alignment == Alignment.TOP_CENTER:
+        return calculatePositionHorizontalCenter(textBoxCornerXY[0], textBoxCornerXY[1], textBoxWH[0], textWH[0])
+    elif alignment == Alignment.TOP_RIGHT:
+        return (textBoxCornerXY[0] + textBoxWH[0] - textWH[0], textBoxCornerXY[1])
+    elif alignment == Alignment.RIGHT_CENTER:
+        return (textBoxCornerXY[0] + textBoxWH[0] - textWH[0], textBoxCornerXY[1] + (textBoxWH[1]/2) - (textWH[1]/2))
+    elif alignment == Alignment.BOTTOM_RIGHT:
+        return (textBoxCornerXY[0] + textBoxWH[0] - textWH[0], textBoxCornerXY[1] + textBoxWH[1] - textWH[1])
+    elif alignment == Alignment.BOTTOM_CENTER:
+        return (textBoxCornerXY[0] + ((textBoxWH[0] - textWH[0]) / 2), textBoxCornerXY[1] + textBoxWH[1] - textWH[1])
+    elif alignment == Alignment.BOTTOM_LEFT:
+        return (textBoxCornerXY[0], textBoxCornerXY[1] + textBoxWH[1] - textWH[1])
+    elif alignment == Alignment.LEFT_CENTER:
+        return calculatePositionVerticalCenter(textBoxCornerXY[0], textBoxCornerXY[1], textBoxWH[1], textWH[1])
+    elif alignment == Alignment.CENTER_CENTER:
+        return calculatePositionFullCenter(textBoxCornerXY[0], textBoxCornerXY[1], textBoxWH[0], textWH[0], textBoxWH[1], textWH[1])
 
 def calculatePositionFullCenter(textBoxCornerX, textBoxCornerY, textBoxWidth, textWidth, textBoxHeight, textHeight):
     return (textBoxCornerX + ((textBoxWidth - textWidth) / 2), textBoxCornerY + ((textBoxHeight - textHeight) / 2))
@@ -13,7 +40,7 @@ def calculatePositionHorizontalCenter(textBoxCornerX, textBoxCornerY, textBoxWid
     return (textBoxCornerX + ((textBoxWidth - textWidth) / 2), textBoxCornerY)
 
 def calculatePositionVerticalCenter(textBoxCornerX, textBoxCornerY, textBoxHeight, textHeight):
-    return (textBoxCornerX, textBoxCornerY + (textBoxHeight/2) - (textHeight/2))
+    return (textBoxCornerX, textBoxCornerY + (textBoxHeight / 2) - (textHeight / 2))
 
 def getPilData(image):
     """
