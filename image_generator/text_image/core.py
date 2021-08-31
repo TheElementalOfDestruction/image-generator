@@ -26,7 +26,7 @@ def createTextImage(text : str, font : str, imageSize = (1920, 1080), textColor 
         raise ValueError('You must specify text to place in the image.')
 
     # Make sure he have an alignment object and convert it to one otherwise.
-    alignment = Alignment(alignment)
+    alignment = Alignment.convert(alignment)
 
     # Create the new image.
     with PIL.Image.new('RGB', imageSize, bgColor) as im:

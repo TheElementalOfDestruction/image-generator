@@ -13,7 +13,7 @@ def calculatePositionAlign(textBoxCornerXY, textBoxWH, textWH, alignment : Align
     height of the text box, and the width and height of the text box to align
     the text with the specified alignment method.
     """
-    alignment = Alignment(alignment)
+    alignment = Alignment.convert(alignment)
     if alignment == Alignment.TOP_LEFT:
         return textBoxCornerXY
     elif alignment == Alignment.TOP_CENTER:
