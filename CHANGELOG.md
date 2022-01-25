@@ -1,3 +1,6 @@
+**v1.7.1**
+* Added some additional templates to the drake generator. Templates taken from [u/oneforgetfulbug on reddit](https://www.reddit.com/r/traaaaaaannnnnnnnnns/comments/qrbq7n/noticed_people_using_lower_quality_versions_of/).
+
 **v1.7.0**
 * Added new submodule `text_image` that creates an image that just has text on it.
 * Added new function to utils called `calculatePositionAlign` which will calculate the specific position based on the alignment specified.

@@ -14,6 +14,7 @@ def registerDrake(name, imagePath, topCorner, bottomCorner, topWidth, topHeight,
     :param bottomWidth:  Width of the top text area.
     :param bottomHeight: Height of the top text area.
     """
+    name = name.lower()
     if name not in DRAKE_IMAGES:
         DRAKE_IMAGES[name] = {
             'image': imagePath,
@@ -28,5 +29,7 @@ def registerDrake(name, imagePath, topCorner, bottomCorner, topWidth, topHeight,
         }
 
 registerDrake('ayano', DIRECTORY + 'drake_ayano_base.png', (242, 2), (242, 247), 240, 235, 240, 235)
-registerDrake('drake', DIRECTORY + 'drake_standard_base.png', (243, 2), (243, 246), 242, 239, 242, 239)
 registerDrake('chika', DIRECTORY + 'drake_chika_base.png', (258, 2), (258, 260), 244, 250, 244, 250)
+registerDrake('drake', DIRECTORY + 'drake_standard_base.png', (243, 2), (243, 246), 242, 239, 242, 239)
+registerDrake('sayori', DIRECTORY + 'drake_sayori_base.webp', (487, 2), (487, 473), 471, 458, 471, 490)
+registerDrake('sayori_confused', DIRECTORY + 'drake_sayori_confused_base.webp', (378, 3), (378, 365), 366, 352, 366, 353)
