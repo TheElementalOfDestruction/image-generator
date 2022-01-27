@@ -130,3 +130,6 @@ dmypy.json
 
 # Upload files
 upload.bat
+
+# Test files
+test.png
